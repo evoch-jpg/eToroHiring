@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>eToro Talent — Resource Board</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:           #0d1421;
+    --bg-card:      #161f30;
+    --bg-card-hover:#1b2840;
+    --bg-pill:      #1e2e45;
+    --teal:         #1aab75;
+    --teal-dim:     #117a52;
+    --teal-faint:   rgba(26,171,117,0.12);
+    --white:        #ffffff;
+    --text-primary: #e8edf5;
+    --text-secondary:#8fa3bc;
+    --text-muted:   #5a7090;
+    --border:       rgba(255,255,255,0.07);
+    --border-hover: rgba(26,171,117,0.35);
+    --radius-sm:    6px;
+    --radius-md:    10px;
+    --radius-lg:    14px;
+  }
+
+  body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  .container { max-width: 1020px; margin: 0 auto; }
+
+  /* ── Header ── */
+  .board-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .header-left {}
+  .logo-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.75rem;
+  }
+  .logo-mark {
+    width: 32px;
+    height: 32px;
+    background: var(--teal);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+  .logo-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.02em;
+  }
+  .board-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.2;
+  }
+  .board-subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 6px;
+    font-weight: 300;
+  }
+  .header-stat {
+    text-align: right;
+  }
+  .stat-number {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--teal);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    font-weight: 400;
+  }
+
+  /* ── Topic ── */
+  .topic { margin-bottom: 2.5rem; }
+  .topic-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+  .topic-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--bg-pill);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 14px 5px 10px;
+  }
+  .topic-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .topic-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: 0.01em;
+  }
+  .topic-count {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-left: auto;
+    padding-left: 1rem;
+  }
+
+  /* ── Cards grid ── */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.125rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: background 0.18s, border-color 0.18s, transform 0.18s;
+    cursor: default;
+  }
+  .card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-hover);
+    transform: translateY(-1px);
+  }
+
+  .card-type {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .t-pdf     { color: #4eb87a; }
+  .t-doc     { color: #5ba3e0; }
+  .t-xlsx    { color: #e6a43a; }
+  .t-mp4     { color: #c47dc5; }
+  .t-monday  { color: var(--teal); }
+
+  .card-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.45;
+  }
+  .card-summary {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .card-link { margin-top: auto; padding-top: 10px; }
+  .card-link a {
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    background: var(--teal-faint);
+    border: 1px solid rgba(26,171,117,0.2);
+    color: var(--teal);
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .card-link a:hover {
+    background: rgba(26,171,117,0.22);
+    border-color: rgba(26,171,117,0.45);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="board-header">
+    <div class="header-left">
+      <div class="logo-row">
+        <div class="logo-mark">eT</div>
+        <span class="logo-text">eToro Talent</span>
+      </div>
+      <h1 class="board-title">Hiring Resource Board</h1>
+      <p class="board-subtitle">All resources, docs and references for the recruiting team in one place.</p>
+    </div>
+    <div class="header-stat">
+      <div class="stat-number">18</div>
+      <div class="stat-label">resources</div>
+    </div>
+  </div>
+
+  <!-- Strategy & Vision -->
+  <div class="topic">
+    <div class="topic-header">
+      <div class="topic-pill">
+        <div class="topic-dot" style="background:#5ba3e0;"></div>
+        <span class="topic-name">Strategy &amp; Vision</span>
+      </div>
+      <span class="topic-count">3 files</span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <span class="card-type t-pdf">PDF — Deck</span>
+        <span class="card-name">eToro AI-First Hiring Ecosystem</span>
+        <span class="card-summary">Full blueprint deck covering the interconnected hiring model across HR, Hiring Managers, and candidates. Includes tool architecture, data flow diagrams, and the continuous automation loop from requisition to onboarding.</span>
+        <div class="card-link"><a href="https://globaltrad-my.sharepoint.com/:b:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/eToro_AI_Hiring_Ecosystem.pdf?csf=1&web=1&e=d8zzaY" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card">
+        <span class="card-type t-pdf">PDF — Deck</span>
+        <span class="card-name">eToro New Hiring Ecosystem</span>
+        <span class="card-summary">Companion deck on the new hiring ecosystem workflow. Covers candidate experience, transparent AI usage, consent protocols, and the full journey from kick-off through to onboarding in Bob.</span>
+        <div class="card-link"><a href="https://globaltrad-my.sharepoint.com/:b:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/eToro%20New%20Hiring%20Ecosystem.pdf?csf=1&web=1&e=Dkeiz5" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card">
+        <span class="card-type t-doc">Word — Doc</span>
+        <span class="card-name">Hiring with and for AI</span>
+        <span class="card-summary">Deep-dive into the current recruiting landscape, pain points, and improvement roadmap. Covers the unified AI-first approach with Base44, Spinach AI, and the interconnected ecosystem from all three stakeholder perspectives.</span>
+        <div class="card-link"><a href="https://globaltrad-my.sharepoint.com/:w:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/Hiring%20with%20and%20for%20A.I.docx?d=w6b44e9779ad04426ae55bdb66fc301fe&csf=1&web=1&e=nunn0j" target="_blank">Open file ↗</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Process Automation -->
+  <div class="topic">
+    <div class="topic-header">
+      <div class="topic-pill">
+        <div class="topic-dot" style="background:#4eb87a;"></div>
+        <span class="topic-name">Process Automation</span>
+      </div>
+      <span class="topic-count">1 file</span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <span class="card-type t-pdf">PDF — Deck</span>
+        <span class="card-name">Automating the Recruitment Lifecycle</span>
+        <span class="card-summary">Operational strategy deck on moving from manual friction to intelligent hiring. Covers the intelligent kick-off, sourcing &amp; scheduling, stopping information leakage, and finalising/security workflows with trigger-based automations and Docusign integration.</span>
+        <div class="card-link"><a href="https://globaltrad-my.sharepoint.com/:b:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/eToro%20Hiring%20Landscape.pdf?csf=1&web=1&e=a680Jg" target="_blank">Open file ↗</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Workflow & Ecosystem Design -->
+  <div class="topic">
+    <div class="topic-header">
+      <div class="topic-pill">
+        <div class="topic-dot" style="background:#c47dc5;"></div>
+        <span class="topic-name">Workflow &amp; Ecosystem Design</span>
+      </div>
+      <span class="topic-count">1 file</span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <span class="card-type t-doc">Word — Doc</span>
+        <span class="card-name">New Hiring Ecosystem</span>
+        <span class="card-summary">Structured breakdown of the proposed interconnected ecosystem across all three stakeholder perspectives: Internal HR &amp; TA, Hiring Manager, and Candidate. Maps each step to the responsible tool with integration types noted.</span>
+        <div class="card-link"><a href="https://globaltrad-my.sharepoint.com/:w:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/New%20Hiring%20Ecosystem.docx?d=w9f5904c9f75b4cf2a5a8f9e81189758e&csf=1&web=1&e=SuPuTV" target="_blank">Open file ↗</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Data & Reporting -->
+  <div class="topic">
+    <div class="topic-header">
+      <div class="topic-pill">
+        <div class="topic-dot" style="background:#e6a43a;"></div>
+        <span class="topic-name">Data &amp; Reporting</span>
+      </div>
+      <span class="topic-count">3 files</span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <span class="card-type t-xlsx">Excel — Dashboard</span>
+        <span class="card-name">Hiring Dashboard Master</span>
+        <span class="card-summary">The master Excel hiring dashboard tracking positions, hires, and key recruiting metrics across the organisation.</span>
+        <div class="card-link"><a href="https://globaltrad-my.sharepoint.com/:x:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/Hiring_Dashboard_Master.xlsx?d=wc1b1d4a3b50245a9b2ed27f2763f2a8b&csf=1&web=1&e=d1DFtw" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card">
+        <span class="card-type t-xlsx">Excel — Tracker</span>
+        <span class="card-name">ATS Trials</span>
+        <span class="card-summary">Spreadsheet tracking the evaluation and trial of ATS platforms assessed as potential alternatives to Sparkhire/Comeet (e.g. Teamtailor, Workable, Greenhouse).</span>
+        <div class="card-link"><a href="https://globaltrad-my.sharepoint.com/:x:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/ATS%20trials.xlsx?d=w3682e2d78c3240398d7b9ff8cb4386cf&csf=1&web=1&e=7fpFP8" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card">
+        <span class="card-type t-doc">Docs — Evaluation</span>
+        <span class="card-name">ATS Evaluations</span>
+        <span class="card-summary">Detailed evaluations of ATS platforms considered as part of the recruitment tech review, covering feature comparisons, strengths, and recommendations.</span>
+        <div class="card-link"><a href="https://docs.google.com/document/d/1183_M-g_bgp4r1GGKp9zk_H6Y4xcgWs6fCj7ne_syO4/edit?tab=t.0" target="_blank">Open file ↗</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tools & SOPs -->
+  <div class="topic">
+    <div class="topic-header">
+      <div class="topic-pill">
+        <div class="topic-dot" style="background:#1aab75;"></div>
+        <span class="topic-name">Tools &amp; SOPs</span>
+      </div>
+      <span class="topic-count">7 files</span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <span class="card-type t-doc">Word — SOP</span>
+        <span class="card-name">SOP for Hiring Teams</span>
+        <span class="card-summary">Living SOP covering how to use the right tools consistently. Includes guides for enabling MS Teams in Comeet, setting up Spinach AI recruiting assistant, and generating evidence-based scorecard evaluations.</span>
+        <div class="card-link"><a href="https://globaltrad-my.sharepoint.com/:w:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/SOP%20For%20Hiring%20Teams%20-%20using%20the%20right%20tools%20to%20hire.docx?d=w207db970ce084ca59eee7fe180d8c472&csf=1&web=1&e=i4r8vN" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card">
+        <span class="card-type t-doc">Word — Checklist</span>
+        <span class="card-name">eToro Recruiting Checklist</span>
+        <span class="card-summary">A reusable recruiting checklist covering key steps across the hiring process. Make a copy to use for each new position.</span>
+        <div class="card-link"><a href="https://globaltrad-my.sharepoint.com/:w:/r/personal/evoch_etoro_com/Documents/eToro%20recruiting%20checklist%20(Make%20a%20Copy).docx?d=w410ebb552e354394865fd6fd773fd0dc&csf=1&web=1&e=PmcEVe" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card">
+        <span class="card-type t-xlsx">Sheets — Spreadsheet</span>
+        <span class="card-name">Benefits by Country</span>
+        <span class="card-summary">Google Sheets reference covering employee benefits broken down by country, used to inform offer discussions and compensation planning.</span>
+        <div class="card-link"><a href="https://docs.google.com/spreadsheets/d/1dI17yqRFZmp-EqBStf0FTo17q_aTb73wRyemx014BLQ/edit?usp=drive_link" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card">
+        <span class="card-type t-doc">Docs — Template</span>
+        <span class="card-name">Offer Approval Template</span>
+        <span class="card-summary">Google Doc template for submitting offer approvals. Used by recruiters to initiate the approval flow with VP and HR before extending an offer to a candidate.</span>
+        <div class="card-link"><a href="https://docs.google.com/document/d/1a9hwPH23ZIMId4LOs1aJMJzqaqm-_Enhj4WqOGjRYZs/edit?usp=drive_link" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card">
+        <span class="card-type t-doc">Docs — Bank</span>
+        <span class="card-name">eToro Global Interview Question Bank</span>
+        <span class="card-summary">Centralised library of interview questions used across roles and departments globally. A reference for building structured, consistent interview frameworks.</span>
+        <div class="card-link"><a href="https://docs.google.com/document/d/15oDArJu2yNMLVOmAmDx7PlM_mf040dO15WSFj7vPJpo/edit?usp=drive_link" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card">
+        <span class="card-type t-doc">Docs — Updates</span>
+        <span class="card-name">eToro Talent Team Weekly Updates</span>
+        <span class="card-summary">Running log of weekly updates from the talent team, covering progress, priorities, and key hiring developments across the organisation.</span>
+        <div class="card-link"><a href="https://docs.google.com/document/d/1FCYzRbVYi1UP-RpqgBqAT6sbuaibOJ30jiTi_PLxiXw/edit?usp=drive_link" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card">
+        <span class="card-type t-xlsx">Sheets — Reference</span>
+        <span class="card-name">Security Procedure by Units</span>
+        <span class="card-summary">Breakdown of the security clearance procedure mapped by business unit, used to guide background check and reliability steps during the offer stage.</span>
+        <div class="card-link"><a href="https://docs.google.com/spreadsheets/d/1v4NxrmNEbOE5FrKVKVc425cSmf1ZQXWxcCLbkgBOM28/edit?usp=drive_link" target="_blank">Open file ↗</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project Tracking -->
+  <div class="topic">
+    <div class="topic-header">
+      <div class="topic-pill">
+        <div class="topic-dot" style="background:#1aab75;"></div>
+        <span class="topic-name">Project Tracking</span>
+      </div>
+      <span class="topic-count">1 board</span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <span class="card-type t-monday">Monday — Board</span>
+        <span class="card-name">Evolving HR &amp; Recruitment Project Tracker</span>
+        <span class="card-summary">Monday.com board tracking the full HR and recruitment evolution project — tasks, owners, statuses, and milestones across the AI-first hiring transformation.</span>
+        <div class="card-link"><a href="https://etoro.monday.com/boards/18404024812" target="_blank">Open board ↗</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Resources -->
+  <div class="topic">
+    <div class="topic-header">
+      <div class="topic-pill">
+        <div class="topic-dot" style="background:#c47dc5;"></div>
+        <span class="topic-name">Video Resources</span>
+      </div>
+      <span class="topic-count">2 files</span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <span class="card-type t-mp4">MP4 — Video</span>
+        <span class="card-name">Using the Right Tools to Hire</span>
+        <span class="card-summary">Video walkthrough on how to use the right tools throughout the hiring process, covering practical guidance for the hiring team.</span>
+        <div class="card-link"><a href="https://globaltrad-my.sharepoint.com/:v:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/Using%20the%20right%20tools%20to%20hire.mp4?csf=1&web=1&e=Yr4x2D" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card">
+        <span class="card-type t-mp4">MP4 — Video</span>
+        <span class="card-name">Teamtailor Demo</span>
+        <span class="card-summary">Demo recording of Teamtailor as part of the ATS evaluation process, assessing it as a potential replacement for Sparkhire/Comeet.</span>
+        <div class="card-link"><a href="https://globaltrad-my.sharepoint.com/:v:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/Teamtailor%20Demo.mp4?csf=1&web=1&e=caHhjd" target="_blank">Open file ↗</a></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
