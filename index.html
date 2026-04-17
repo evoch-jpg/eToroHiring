@@ -46,7 +46,6 @@
     padding-bottom: 2rem;
     border-bottom: 1px solid var(--border);
   }
-  .header-left {}
   .logo-row {
     display: flex;
     align-items: center;
@@ -54,156 +53,224 @@
     margin-bottom: 0.75rem;
   }
   .logo-mark {
-    width: 32px;
-    height: 32px;
+    width: 32px; height: 32px;
     background: var(--teal);
     border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 600; font-size: 14px; color: #fff; letter-spacing: -0.5px;
+  }
+  .logo-text { font-size: 15px; font-weight: 600; color: var(--white); letter-spacing: 0.02em; }
+  .board-title { font-size: 28px; font-weight: 600; color: var(--white); line-height: 1.2; }
+  .board-subtitle { font-size: 14px; color: var(--text-secondary); margin-top: 6px; font-weight: 300; }
+  .header-stat { text-align: right; }
+  .stat-number { font-size: 32px; font-weight: 600; color: var(--teal); line-height: 1; }
+  .stat-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+  /* ── Search bar ── */
+  .search-wrap {
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+  .search-icon {
+    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--text-muted); font-size: 16px; pointer-events: none;
+  }
+  #searchInput {
+    width: 100%;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 12px 14px 12px 42px;
+    font-family: inherit;
     font-size: 14px;
-    color: #fff;
-    letter-spacing: -0.5px;
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.2s;
   }
-  .logo-text {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--white);
-    letter-spacing: 0.02em;
-  }
-  .board-title {
-    font-size: 28px;
-    font-weight: 600;
-    color: var(--white);
-    line-height: 1.2;
-  }
-  .board-subtitle {
-    font-size: 14px;
-    color: var(--text-secondary);
-    margin-top: 6px;
-    font-weight: 300;
-  }
-  .header-stat {
-    text-align: right;
-  }
-  .stat-number {
-    font-size: 32px;
-    font-weight: 600;
-    color: var(--teal);
-    line-height: 1;
-  }
-  .stat-label {
-    font-size: 12px;
+  #searchInput::placeholder { color: var(--text-muted); }
+  #searchInput:focus { border-color: rgba(26,171,117,0.4); }
+  #noResults {
+    display: none;
+    text-align: center;
+    padding: 2rem;
     color: var(--text-muted);
-    margin-top: 4px;
-    font-weight: 400;
+    font-size: 14px;
   }
 
   /* ── Topic ── */
   .topic { margin-bottom: 2.5rem; }
-  .topic-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 1rem;
-  }
+  .topic-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
   .topic-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    background: var(--bg-pill);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 5px 14px 5px 10px;
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--bg-pill); border: 1px solid var(--border);
+    border-radius: 20px; padding: 5px 14px 5px 10px;
   }
-  .topic-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .topic-name {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-primary);
-    letter-spacing: 0.01em;
-  }
-  .topic-count {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-left: auto;
-    padding-left: 1rem;
-  }
+  .topic-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .topic-name { font-size: 13px; font-weight: 500; color: var(--text-primary); letter-spacing: 0.01em; }
+  .topic-count { font-size: 11px; color: var(--text-muted); margin-left: auto; padding-left: 1rem; }
 
-  /* ── Cards grid ── */
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 12px;
-  }
-
+  /* ── Cards ── */
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
   .card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 1.125rem 1.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 1.125rem 1.25rem;
+    display: flex; flex-direction: column; gap: 8px;
     transition: background 0.18s, border-color 0.18s, transform 0.18s;
-    cursor: default;
   }
-  .card:hover {
-    background: var(--bg-card-hover);
-    border-color: var(--border-hover);
-    transform: translateY(-1px);
-  }
+  .card:hover { background: var(--bg-card-hover); border-color: var(--border-hover); transform: translateY(-1px); }
+  .card.hidden { display: none; }
 
-  .card-type {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .t-pdf     { color: #4eb87a; }
-  .t-doc     { color: #5ba3e0; }
-  .t-xlsx    { color: #e6a43a; }
-  .t-mp4     { color: #c47dc5; }
-  .t-monday  { color: var(--teal); }
+  .card-type { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+  .t-pdf    { color: #4eb87a; }
+  .t-doc    { color: #5ba3e0; }
+  .t-xlsx   { color: #e6a43a; }
+  .t-mp4    { color: #c47dc5; }
+  .t-monday { color: var(--teal); }
 
-  .card-name {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--white);
-    line-height: 1.45;
-  }
-  .card-summary {
-    font-size: 12px;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    font-weight: 300;
-  }
-
+  .card-name { font-size: 13px; font-weight: 500; color: var(--white); line-height: 1.45; }
+  .card-summary { font-size: 12px; color: var(--text-secondary); line-height: 1.7; font-weight: 300; }
   .card-link { margin-top: auto; padding-top: 10px; }
   .card-link a {
-    font-size: 12px;
-    font-weight: 500;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 6px 14px;
-    border-radius: var(--radius-sm);
-    background: var(--teal-faint);
-    border: 1px solid rgba(26,171,117,0.2);
-    color: var(--teal);
-    transition: background 0.15s, border-color 0.15s;
+    font-size: 12px; font-weight: 500; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 6px 14px; border-radius: var(--radius-sm);
+    background: var(--teal-faint); border: 1px solid rgba(26,171,117,0.2);
+    color: var(--teal); transition: background 0.15s, border-color 0.15s;
   }
-  .card-link a:hover {
-    background: rgba(26,171,117,0.22);
-    border-color: rgba(26,171,117,0.45);
+  .card-link a:hover { background: rgba(26,171,117,0.22); border-color: rgba(26,171,117,0.45); }
+
+  /* ── Floating chat button ── */
+  #chatBtn {
+    position: fixed; bottom: 28px; right: 28px;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--teal); border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(26,171,117,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    z-index: 1000;
   }
+  #chatBtn:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(26,171,117,0.55); }
+  #chatBtn svg { width: 24px; height: 24px; fill: white; }
+
+  /* ── Chat panel ── */
+  #chatPanel {
+    position: fixed; bottom: 96px; right: 28px;
+    width: 380px; max-height: 560px;
+    background: #111c2e;
+    border: 1px solid rgba(26,171,117,0.25);
+    border-radius: 18px;
+    display: none; flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    z-index: 999;
+    font-family: 'DM Sans', sans-serif;
+  }
+  #chatPanel.open { display: flex; }
+
+  .chat-header {
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .chat-avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--teal);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 600; color: white; flex-shrink: 0;
+  }
+  .chat-header-text {}
+  .chat-header-name { font-size: 13px; font-weight: 600; color: var(--white); }
+  .chat-header-status { font-size: 11px; color: var(--teal); }
+  .chat-close {
+    margin-left: auto; background: none; border: none;
+    color: var(--text-muted); cursor: pointer; font-size: 18px; line-height: 1;
+    padding: 4px;
+  }
+  .chat-close:hover { color: var(--text-primary); }
+
+  #chatMessages {
+    flex: 1; overflow-y: auto; padding: 16px;
+    display: flex; flex-direction: column; gap: 12px;
+    scrollbar-width: thin; scrollbar-color: var(--bg-pill) transparent;
+  }
+
+  .msg {
+    max-width: 88%; font-size: 13px; line-height: 1.6;
+    padding: 10px 13px; border-radius: 12px;
+    animation: fadeUp 0.2s ease;
+  }
+  @keyframes fadeUp { from { opacity:0; transform: translateY(6px); } to { opacity:1; transform: none; } }
+
+  .msg.bot {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    border-bottom-left-radius: 4px;
+    align-self: flex-start;
+  }
+  .msg.user {
+    background: var(--teal);
+    color: white;
+    border-bottom-right-radius: 4px;
+    align-self: flex-end;
+  }
+  .msg.bot a { color: var(--teal); text-decoration: underline; }
+  .msg-typing {
+    display: flex; gap: 4px; padding: 12px 14px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; border-bottom-left-radius: 4px;
+    align-self: flex-start;
+  }
+  .msg-typing span {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--text-muted);
+    animation: blink 1.2s infinite;
+  }
+  .msg-typing span:nth-child(2) { animation-delay: 0.2s; }
+  .msg-typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes blink { 0%,80%,100%{opacity:0.3} 40%{opacity:1} }
+
+  .chat-input-row {
+    padding: 12px 14px;
+    border-top: 1px solid var(--border);
+    display: flex; gap: 8px; align-items: flex-end;
+  }
+  #chatInput {
+    flex: 1; background: var(--bg-pill);
+    border: 1px solid var(--border);
+    border-radius: 10px; padding: 9px 12px;
+    font-family: inherit; font-size: 13px;
+    color: var(--text-primary); resize: none;
+    outline: none; max-height: 100px;
+    transition: border-color 0.2s;
+    line-height: 1.5;
+  }
+  #chatInput::placeholder { color: var(--text-muted); }
+  #chatInput:focus { border-color: rgba(26,171,117,0.4); }
+  #sendBtn {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--teal); border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: background 0.15s;
+  }
+  #sendBtn:hover { background: var(--teal-dim); }
+  #sendBtn:disabled { background: var(--bg-pill); cursor: default; }
+  #sendBtn svg { width: 16px; height: 16px; fill: white; }
+
+  /* ── Suggested prompts ── */
+  .chat-suggestions {
+    padding: 0 14px 12px;
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .suggestion {
+    font-size: 11px; font-weight: 500;
+    padding: 5px 10px; border-radius: 20px;
+    background: var(--bg-pill); border: 1px solid var(--border);
+    color: var(--text-secondary); cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+  .suggestion:hover { border-color: rgba(26,171,117,0.35); color: var(--teal); }
 </style>
 </head>
 <body>
@@ -219,34 +286,38 @@
       <p class="board-subtitle">All resources, docs and references for the recruiting team in one place.</p>
     </div>
     <div class="header-stat">
-      <div class="stat-number">18</div>
+      <div class="stat-number">37</div>
       <div class="stat-label">resources</div>
     </div>
   </div>
 
+  <!-- Search -->
+  <div class="search-wrap">
+    <span class="search-icon">&#9906;</span>
+    <input type="text" id="searchInput" placeholder="Search resources, topics or file types…" autocomplete="off">
+  </div>
+  <div id="noResults">No resources match your search.</div>
+
   <!-- Strategy & Vision -->
-  <div class="topic">
+  <div class="topic" data-topic="strategy vision">
     <div class="topic-header">
-      <div class="topic-pill">
-        <div class="topic-dot" style="background:#5ba3e0;"></div>
-        <span class="topic-name">Strategy &amp; Vision</span>
-      </div>
+      <div class="topic-pill"><div class="topic-dot" style="background:#5ba3e0;"></div><span class="topic-name">Strategy &amp; Vision</span></div>
       <span class="topic-count">3 files</span>
     </div>
     <div class="cards">
-      <div class="card">
+      <div class="card" data-search="strategy vision ai first hiring ecosystem blueprint architecture automation loop onboarding pdf deck">
         <span class="card-type t-pdf">PDF — Deck</span>
         <span class="card-name">eToro AI-First Hiring Ecosystem</span>
         <span class="card-summary">Full blueprint deck covering the interconnected hiring model across HR, Hiring Managers, and candidates. Includes tool architecture, data flow diagrams, and the continuous automation loop from requisition to onboarding.</span>
         <div class="card-link"><a href="https://globaltrad-my.sharepoint.com/:b:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/eToro_AI_Hiring_Ecosystem.pdf?csf=1&web=1&e=d8zzaY" target="_blank">Open file ↗</a></div>
       </div>
-      <div class="card">
+      <div class="card" data-search="strategy vision new hiring ecosystem workflow candidate experience ai consent bob onboarding pdf deck">
         <span class="card-type t-pdf">PDF — Deck</span>
         <span class="card-name">eToro New Hiring Ecosystem</span>
         <span class="card-summary">Companion deck on the new hiring ecosystem workflow. Covers candidate experience, transparent AI usage, consent protocols, and the full journey from kick-off through to onboarding in Bob.</span>
         <div class="card-link"><a href="https://globaltrad-my.sharepoint.com/:b:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/eToro%20New%20Hiring%20Ecosystem.pdf?csf=1&web=1&e=Dkeiz5" target="_blank">Open file ↗</a></div>
       </div>
-      <div class="card">
+      <div class="card" data-search="strategy vision hiring ai base44 spinach roadmap recruiter landscape improvement doc">
         <span class="card-type t-doc">Word — Doc</span>
         <span class="card-name">Hiring with and for AI</span>
         <span class="card-summary">Deep-dive into the current recruiting landscape, pain points, and improvement roadmap. Covers the unified AI-first approach with Base44, Spinach AI, and the interconnected ecosystem from all three stakeholder perspectives.</span>
@@ -256,16 +327,13 @@
   </div>
 
   <!-- Process Automation -->
-  <div class="topic">
+  <div class="topic" data-topic="process automation">
     <div class="topic-header">
-      <div class="topic-pill">
-        <div class="topic-dot" style="background:#4eb87a;"></div>
-        <span class="topic-name">Process Automation</span>
-      </div>
+      <div class="topic-pill"><div class="topic-dot" style="background:#4eb87a;"></div><span class="topic-name">Process Automation</span></div>
       <span class="topic-count">1 file</span>
     </div>
     <div class="cards">
-      <div class="card">
+      <div class="card" data-search="process automation recruitment lifecycle kickoff scheduling docusign security triggers spinach pdf deck">
         <span class="card-type t-pdf">PDF — Deck</span>
         <span class="card-name">Automating the Recruitment Lifecycle</span>
         <span class="card-summary">Operational strategy deck on moving from manual friction to intelligent hiring. Covers the intelligent kick-off, sourcing &amp; scheduling, stopping information leakage, and finalising/security workflows with trigger-based automations and Docusign integration.</span>
@@ -275,16 +343,13 @@
   </div>
 
   <!-- Workflow & Ecosystem Design -->
-  <div class="topic">
+  <div class="topic" data-topic="workflow ecosystem design">
     <div class="topic-header">
-      <div class="topic-pill">
-        <div class="topic-dot" style="background:#c47dc5;"></div>
-        <span class="topic-name">Workflow &amp; Ecosystem Design</span>
-      </div>
+      <div class="topic-pill"><div class="topic-dot" style="background:#c47dc5;"></div><span class="topic-name">Workflow &amp; Ecosystem Design</span></div>
       <span class="topic-count">1 file</span>
     </div>
     <div class="cards">
-      <div class="card">
+      <div class="card" data-search="workflow ecosystem design hiring manager candidate hr ta integration tools doc">
         <span class="card-type t-doc">Word — Doc</span>
         <span class="card-name">New Hiring Ecosystem</span>
         <span class="card-summary">Structured breakdown of the proposed interconnected ecosystem across all three stakeholder perspectives: Internal HR &amp; TA, Hiring Manager, and Candidate. Maps each step to the responsible tool with integration types noted.</span>
@@ -294,28 +359,25 @@
   </div>
 
   <!-- Data & Reporting -->
-  <div class="topic">
+  <div class="topic" data-topic="data reporting">
     <div class="topic-header">
-      <div class="topic-pill">
-        <div class="topic-dot" style="background:#e6a43a;"></div>
-        <span class="topic-name">Data &amp; Reporting</span>
-      </div>
+      <div class="topic-pill"><div class="topic-dot" style="background:#e6a43a;"></div><span class="topic-name">Data &amp; Reporting</span></div>
       <span class="topic-count">3 files</span>
     </div>
     <div class="cards">
-      <div class="card">
+      <div class="card" data-search="data reporting hiring dashboard master excel metrics positions hires">
         <span class="card-type t-xlsx">Excel — Dashboard</span>
         <span class="card-name">Hiring Dashboard Master</span>
         <span class="card-summary">The master Excel hiring dashboard tracking positions, hires, and key recruiting metrics across the organisation.</span>
         <div class="card-link"><a href="https://globaltrad-my.sharepoint.com/:x:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/Hiring_Dashboard_Master.xlsx?d=wc1b1d4a3b50245a9b2ed27f2763f2a8b&csf=1&web=1&e=d1DFtw" target="_blank">Open file ↗</a></div>
       </div>
-      <div class="card">
+      <div class="card" data-search="data reporting ats trials teamtailor workable greenhouse evaluation excel tracker">
         <span class="card-type t-xlsx">Excel — Tracker</span>
         <span class="card-name">ATS Trials</span>
         <span class="card-summary">Spreadsheet tracking the evaluation and trial of ATS platforms assessed as potential alternatives to Sparkhire/Comeet (e.g. Teamtailor, Workable, Greenhouse).</span>
         <div class="card-link"><a href="https://globaltrad-my.sharepoint.com/:x:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/ATS%20trials.xlsx?d=w3682e2d78c3240398d7b9ff8cb4386cf&csf=1&web=1&e=7fpFP8" target="_blank">Open file ↗</a></div>
       </div>
-      <div class="card">
+      <div class="card" data-search="data reporting ats evaluations comparison strengths recommendations google docs">
         <span class="card-type t-doc">Docs — Evaluation</span>
         <span class="card-name">ATS Evaluations</span>
         <span class="card-summary">Detailed evaluations of ATS platforms considered as part of the recruitment tech review, covering feature comparisons, strengths, and recommendations.</span>
@@ -325,52 +387,49 @@
   </div>
 
   <!-- Tools & SOPs -->
-  <div class="topic">
+  <div class="topic" data-topic="tools sops checklist template benefits security interview offer">
     <div class="topic-header">
-      <div class="topic-pill">
-        <div class="topic-dot" style="background:#1aab75;"></div>
-        <span class="topic-name">Tools &amp; SOPs</span>
-      </div>
+      <div class="topic-pill"><div class="topic-dot" style="background:#1aab75;"></div><span class="topic-name">Tools &amp; SOPs</span></div>
       <span class="topic-count">7 files</span>
     </div>
     <div class="cards">
-      <div class="card">
+      <div class="card" data-search="tools sop hiring teams comeet ms teams spinach ai scorecard evaluation doc">
         <span class="card-type t-doc">Word — SOP</span>
         <span class="card-name">SOP for Hiring Teams</span>
         <span class="card-summary">Living SOP covering how to use the right tools consistently. Includes guides for enabling MS Teams in Comeet, setting up Spinach AI recruiting assistant, and generating evidence-based scorecard evaluations.</span>
         <div class="card-link"><a href="https://globaltrad-my.sharepoint.com/:w:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/SOP%20For%20Hiring%20Teams%20-%20using%20the%20right%20tools%20to%20hire.docx?d=w207db970ce084ca59eee7fe180d8c472&csf=1&web=1&e=i4r8vN" target="_blank">Open file ↗</a></div>
       </div>
-      <div class="card">
+      <div class="card" data-search="tools checklist recruiting etoro reusable position steps doc">
         <span class="card-type t-doc">Word — Checklist</span>
         <span class="card-name">eToro Recruiting Checklist</span>
         <span class="card-summary">A reusable recruiting checklist covering key steps across the hiring process. Make a copy to use for each new position.</span>
         <div class="card-link"><a href="https://globaltrad-my.sharepoint.com/:w:/r/personal/evoch_etoro_com/Documents/eToro%20recruiting%20checklist%20(Make%20a%20Copy).docx?d=w410ebb552e354394865fd6fd773fd0dc&csf=1&web=1&e=PmcEVe" target="_blank">Open file ↗</a></div>
       </div>
-      <div class="card">
+      <div class="card" data-search="tools benefits country compensation offer planning sheets google">
         <span class="card-type t-xlsx">Sheets — Spreadsheet</span>
         <span class="card-name">Benefits by Country</span>
         <span class="card-summary">Google Sheets reference covering employee benefits broken down by country, used to inform offer discussions and compensation planning.</span>
         <div class="card-link"><a href="https://docs.google.com/spreadsheets/d/1dI17yqRFZmp-EqBStf0FTo17q_aTb73wRyemx014BLQ/edit?usp=drive_link" target="_blank">Open file ↗</a></div>
       </div>
-      <div class="card">
+      <div class="card" data-search="tools offer approval template vp hr recruiter google docs">
         <span class="card-type t-doc">Docs — Template</span>
         <span class="card-name">Offer Approval Template</span>
         <span class="card-summary">Google Doc template for submitting offer approvals. Used by recruiters to initiate the approval flow with VP and HR before extending an offer to a candidate.</span>
         <div class="card-link"><a href="https://docs.google.com/document/d/1a9hwPH23ZIMId4LOs1aJMJzqaqm-_Enhj4WqOGjRYZs/edit?usp=drive_link" target="_blank">Open file ↗</a></div>
       </div>
-      <div class="card">
+      <div class="card" data-search="tools interview question bank global etoro structured consistent framework google docs">
         <span class="card-type t-doc">Docs — Bank</span>
         <span class="card-name">eToro Global Interview Question Bank</span>
         <span class="card-summary">Centralised library of interview questions used across roles and departments globally. A reference for building structured, consistent interview frameworks.</span>
         <div class="card-link"><a href="https://docs.google.com/document/d/15oDArJu2yNMLVOmAmDx7PlM_mf040dO15WSFj7vPJpo/edit?usp=drive_link" target="_blank">Open file ↗</a></div>
       </div>
-      <div class="card">
+      <div class="card" data-search="tools talent team weekly updates log priorities hiring developments google docs">
         <span class="card-type t-doc">Docs — Updates</span>
         <span class="card-name">eToro Talent Team Weekly Updates</span>
         <span class="card-summary">Running log of weekly updates from the talent team, covering progress, priorities, and key hiring developments across the organisation.</span>
         <div class="card-link"><a href="https://docs.google.com/document/d/1FCYzRbVYi1UP-RpqgBqAT6sbuaibOJ30jiTi_PLxiXw/edit?usp=drive_link" target="_blank">Open file ↗</a></div>
       </div>
-      <div class="card">
+      <div class="card" data-search="tools security procedure units background check reliability offer stage sheets google">
         <span class="card-type t-xlsx">Sheets — Reference</span>
         <span class="card-name">Security Procedure by Units</span>
         <span class="card-summary">Breakdown of the security clearance procedure mapped by business unit, used to guide background check and reliability steps during the offer stage.</span>
@@ -380,16 +439,13 @@
   </div>
 
   <!-- Project Tracking -->
-  <div class="topic">
+  <div class="topic" data-topic="project tracking monday">
     <div class="topic-header">
-      <div class="topic-pill">
-        <div class="topic-dot" style="background:#1aab75;"></div>
-        <span class="topic-name">Project Tracking</span>
-      </div>
+      <div class="topic-pill"><div class="topic-dot" style="background:#1aab75;"></div><span class="topic-name">Project Tracking</span></div>
       <span class="topic-count">1 board</span>
     </div>
     <div class="cards">
-      <div class="card">
+      <div class="card" data-search="project tracking monday hr recruitment evolving transformation milestones tasks owners">
         <span class="card-type t-monday">Monday — Board</span>
         <span class="card-name">Evolving HR &amp; Recruitment Project Tracker</span>
         <span class="card-summary">Monday.com board tracking the full HR and recruitment evolution project — tasks, owners, statuses, and milestones across the AI-first hiring transformation.</span>
@@ -398,23 +454,227 @@
     </div>
   </div>
 
-  <!-- Video Resources -->
-  <div class="topic">
+  <!-- A.I Tools & Other Apps -->
+  <div class="topic" data-topic="ai tools spinach claude chatgpt base44 notebooklm goperfect">
     <div class="topic-header">
-      <div class="topic-pill">
-        <div class="topic-dot" style="background:#c47dc5;"></div>
-        <span class="topic-name">Video Resources</span>
+      <div class="topic-pill"><div class="topic-dot" style="background:#5ba3e0;"></div><span class="topic-name">A.I Tools & Other Apps</span></div>
+      <span class="topic-count">7 tools</span>
+    </div>
+    <div class="cards">
+      <div class="card" data-search="ai tools spinach recording transcribing interviews notes agent recruiting assistant">
+        <span class="card-type t-doc">App — AI Notetaker</span>
+        <span class="card-name">Spinach AI</span>
+        <span class="card-summary">AI recruiting assistant used across all virtual interviews. Records, transcribes, and generates structured notes and evaluations. Configure the recruiting assistant agent with "Video Interview" keyword.</span>
+        <div class="card-link"><a href="https://app.spinach.ai/ai/home?section=summaries&sid=SPS17c8ebd477&bid=c612c1ee-c91b-4410-8c7d-d982996b295f&_t=1776404169887&sso=true&cid=2e3c6d6a-6548-46c8-9134-bf71da3aabcb" target="_blank">Open tool ↗</a></div>
       </div>
+      <div class="card" data-search="ai tools claude anthropic assistant writing analysis">
+        <span class="card-type t-doc">App — AI Assistant</span>
+        <span class="card-name">Claude</span>
+        <span class="card-summary">Anthropic's AI assistant. Used for drafting job descriptions, analysing CVs, generating scorecards, writing communications, and supporting recruiters with a wide range of tasks.</span>
+        <div class="card-link"><a href="https://claude.ai/new" target="_blank">Open tool ↗</a></div>
+      </div>
+      <div class="card" data-search="ai tools chatgpt openai assistant writing low level tasks">
+        <span class="card-type t-doc">App — AI Assistant</span>
+        <span class="card-name">ChatGPT</span>
+        <span class="card-summary">OpenAI's AI assistant. Used for low-level tasks such as drafting emails, summarising content, and general text generation to support the recruiting workflow.</span>
+        <div class="card-link"><a href="https://chatgpt.com/" target="_blank">Open tool ↗</a></div>
+      </div>
+      <div class="card" data-search="ai tools base44 app builder integration mini apps yossi evo requisition evaluation">
+        <span class="card-type t-doc">App — Builder</span>
+        <span class="card-name">Base44</span>
+        <span class="card-summary">No-code AI app builder used to create the Yossi (job requisition) and Evo (AI skills evaluator) apps. Enables custom integrations and mini-apps where native integrations are missing.</span>
+        <div class="card-link"><a href="https://app.base44.com/" target="_blank">Open tool ↗</a></div>
+      </div>
+      <div class="card" data-search="ai tools notebooklm google research summarise documents onboarding overview">
+        <span class="card-type t-doc">App — AI Research</span>
+        <span class="card-name">NotebookLM</span>
+        <span class="card-summary">Google's AI research tool. Used to create video overviews for candidates, generate onboarding plans for new talent team members, and synthesise content from multiple documents.</span>
+        <div class="card-link"><a href="https://notebooklm.google.com/" target="_blank">Open tool ↗</a></div>
+      </div>
+      <div class="card" data-search="ai tools goperfect etoro interview assessment platform">
+        <span class="card-type t-doc">App — Assessment</span>
+        <span class="card-name">goPerfect</span>
+        <span class="card-summary">eToro's interview and assessment platform. Used as part of the hiring process to evaluate candidates.</span>
+        <div class="card-link"><a href="https://etoro.goperfect.com/" target="_blank">Open tool ↗</a></div>
+      </div>
+      <div class="card" data-search="ai tools myapps microsoft comeet recruit bob docusign monday applications portal">
+        <span class="card-type t-doc">Portal — Microsoft</span>
+        <span class="card-name">MyApps</span>
+        <span class="card-summary">Microsoft app portal — your one-stop hub to access Comeet Recruit, Bob, Docusign, Monday.com, and all other company applications.</span>
+        <div class="card-link"><a href="https://myapplications.microsoft.com/" target="_blank">Open tool ↗</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Employment Contract Templates -->
+  <div class="topic" data-topic="employment contract templates australia belgium uk us malta germany france cyprus">
+    <div class="topic-header">
+      <div class="topic-pill"><div class="topic-dot" style="background:#e6a43a;"></div><span class="topic-name">Employment Contract Templates</span></div>
+      <span class="topic-count">9 templates</span>
+    </div>
+    <div class="cards">
+      <div class="card" data-search="employment contract template australia google doc">
+        <span class="card-type t-doc">Docs — Contract</span>
+        <span class="card-name">Australia Employment Contract Template</span>
+        <span class="card-summary">Standard employment contract template for hiring in Australia.</span>
+        <div class="card-link"><a href="https://docs.google.com/document/d/1-eKjG_Y2C5nP8bn52MoI8pINgZxN9dZo/edit?usp=drive_link&ouid=111298664576788220628&rtpof=true&sd=true" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card" data-search="employment contract template belgium english google doc">
+        <span class="card-type t-doc">Docs — Contract</span>
+        <span class="card-name">Belgium Employment Contract Template (English)</span>
+        <span class="card-summary">Standard employment contract template for hiring in Belgium — English version.</span>
+        <div class="card-link"><a href="https://docs.google.com/document/d/107KqNxV5jODi18WpoO5fXqHut-78UpAt/edit?usp=drive_link&ouid=111298664576788220628&rtpof=true&sd=true" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card" data-search="employment contract template belgium deutsch german google doc">
+        <span class="card-type t-doc">Docs — Contract</span>
+        <span class="card-name">Belgium Employment Contract Template (Deutsch)</span>
+        <span class="card-summary">Standard employment contract template for hiring in Belgium — Deutsch version.</span>
+        <div class="card-link"><a href="https://docs.google.com/document/d/10D6Dn1jCdjixR21aFnCw7yjdtYTDjUvc/edit?usp=drive_link&ouid=111298664576788220628&rtpof=true&sd=true" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card" data-search="employment contract template uk united kingdom cf roles google doc">
+        <span class="card-type t-doc">Docs — Contract</span>
+        <span class="card-name">UK Employment Contract Template (CF Roles)</span>
+        <span class="card-summary">Standard employment contract template for CF roles hiring in the United Kingdom.</span>
+        <div class="card-link"><a href="https://docs.google.com/document/d/192d6BjE2s8HX4JzbivaDR7eTxBOKe3TE/edit?usp=drive_link&ouid=111298664576788220628&rtpof=true&sd=true" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card" data-search="employment contract template us united states google doc">
+        <span class="card-type t-doc">Docs — Contract</span>
+        <span class="card-name">US Employment Contract Template</span>
+        <span class="card-summary">Standard employment contract template for hiring in the United States.</span>
+        <div class="card-link"><a href="#" style="opacity:0.45;pointer-events:none;">Link coming soon</a></div>
+      </div>
+      <div class="card" data-search="employment contract template malta google doc">
+        <span class="card-type t-doc">Docs — Contract</span>
+        <span class="card-name">Malta Employment Contract Template</span>
+        <span class="card-summary">Standard employment contract template for hiring in Malta.</span>
+        <div class="card-link"><a href="#" style="opacity:0.45;pointer-events:none;">Link coming soon</a></div>
+      </div>
+      <div class="card" data-search="employment contract template germany german google doc">
+        <span class="card-type t-doc">Docs — Contract</span>
+        <span class="card-name">Germany Employment Contract Template</span>
+        <span class="card-summary">Standard employment contract template for hiring in Germany.</span>
+        <div class="card-link"><a href="#" style="opacity:0.45;pointer-events:none;">Link coming soon</a></div>
+      </div>
+      <div class="card" data-search="employment contract template france french google doc">
+        <span class="card-type t-doc">Docs — Contract</span>
+        <span class="card-name">France Employment Contract Template</span>
+        <span class="card-summary">Standard employment contract template for hiring in France.</span>
+        <div class="card-link"><a href="#" style="opacity:0.45;pointer-events:none;">Link coming soon</a></div>
+      </div>
+      <div class="card" data-search="employment contract template cyprus greek google doc">
+        <span class="card-type t-doc">Docs — Contract</span>
+        <span class="card-name">Cyprus Employment Contract Template</span>
+        <span class="card-summary">Standard employment contract template for hiring in Cyprus.</span>
+        <div class="card-link"><a href="#" style="opacity:0.45;pointer-events:none;">Link coming soon</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Employment Contract Templates -->
+  <div class="topic" data-topic="employment contract templates australia belgium uk us malta germany cyprus">
+    <div class="topic-header">
+      <div class="topic-pill"><div class="topic-dot" style="background:#e6a43a;"></div><span class="topic-name">Employment Contract Templates</span></div>
+      <span class="topic-count">12 templates</span>
+    </div>
+    <div class="cards">
+      <div class="card" data-search="employment contract template australia">
+        <span class="card-type t-doc">Docs — Template</span>
+        <span class="card-name">Australia Employment Contract Template</span>
+        <span class="card-summary">Standard employment contract template for Australia-based hires.</span>
+        <div class="card-link"><a href="https://docs.google.com/document/d/1-eKjG_Y2C5nP8bn52MoI8pINgZxN9dZo/edit?usp=drive_link&ouid=111298664576788220628&rtpof=true&sd=true" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card" data-search="employment contract template belgium english">
+        <span class="card-type t-doc">Docs — Template</span>
+        <span class="card-name">Belgium Employment Contract Template (English)</span>
+        <span class="card-summary">Employment contract template for Belgium-based hires — English version.</span>
+        <div class="card-link"><a href="https://docs.google.com/document/d/107KqNxV5jODi18WpoO5fXqHut-78UpAt/edit?usp=drive_link&ouid=111298664576788220628&rtpof=true&sd=true" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card" data-search="employment contract template belgium deutsch german">
+        <span class="card-type t-doc">Docs — Template</span>
+        <span class="card-name">Belgium Employment Contract Template (Deutsch)</span>
+        <span class="card-summary">Employment contract template for Belgium-based hires — Deutsch version.</span>
+        <div class="card-link"><a href="https://docs.google.com/document/d/10D6Dn1jCdjixR21aFnCw7yjdtYTDjUvc/edit?usp=drive_link&ouid=111298664576788220628&rtpof=true&sd=true" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card" data-search="employment contract template uk cf roles">
+        <span class="card-type t-doc">Docs — Template</span>
+        <span class="card-name">UK Employment Contract Template (CF Roles)</span>
+        <span class="card-summary">Employment contract template for UK-based hires in CF (Controlled Function) roles.</span>
+        <div class="card-link"><a href="https://docs.google.com/document/d/192d6BjE2s8HX4JzbivaDR7eTxBOKe3TE/edit?usp=drive_link&ouid=111298664576788220628&rtpof=true&sd=true" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card" data-search="employment contract template uk other">
+        <span class="card-type t-doc">Docs — Template</span>
+        <span class="card-name">UK Employment Contract Template (Other)</span>
+        <span class="card-summary">Employment contract template for UK-based hires in non-CF roles.</span>
+        <div class="card-link"><a href="https://docs.google.com/document/d/1FMnDT7sTmg4xnduTPXN3ruDqRiBsw6Tf/edit?usp=drive_link&ouid=111298664576788220628&rtpof=true&sd=true" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card" data-search="employment contract template uk senior">
+        <span class="card-type t-doc">Docs — Template</span>
+        <span class="card-name">UK Employment Contract Template (Senior)</span>
+        <span class="card-summary">Employment contract template for UK-based senior-level hires.</span>
+        <div class="card-link"><a href="https://docs.google.com/document/d/1B9I6UqDogKGyPkdS1zTaTCfEUZEHbhSd/edit?usp=drive_link&ouid=111298664576788220628&rtpof=true&sd=true" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card" data-search="employment contract template us usa permanent">
+        <span class="card-type t-doc">Docs — Template</span>
+        <span class="card-name">US Employment Contract Template (Permanent)</span>
+        <span class="card-summary">Employment contract template for permanent US-based hires.</span>
+        <div class="card-link"><a href="https://docs.google.com/document/d/1qUDC5_J7zlrwafO8t9E9P1xQORGBBGoR/edit?usp=drive_link&ouid=111298664576788220628&rtpof=true&sd=true" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card" data-search="employment contract template us usa fixed term">
+        <span class="card-type t-doc">Docs — Template</span>
+        <span class="card-name">US Employment Contract Template (Fixed Term)</span>
+        <span class="card-summary">Employment contract template for fixed-term US-based hires.</span>
+        <div class="card-link"><a href="https://docs.google.com/document/d/1-OcHMLJw10yT1jXQSG_kqjhP2kbq3noB/edit?usp=drive_link&ouid=111298664576788220628&rtpof=true&sd=true" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card" data-search="employment contract template malta">
+        <span class="card-type t-doc">Docs — Template</span>
+        <span class="card-name">Malta Employment Contract Template</span>
+        <span class="card-summary">Employment contract template for Malta-based hires.</span>
+        <div class="card-link"><a href="https://docs.google.com/document/d/16CLubMQXZzR-sR13rQJx2D7IAuXOv5Fr/edit?usp=drive_link&ouid=111298664576788220628&rtpof=true&sd=true" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card" data-search="employment contract template germany bonus">
+        <span class="card-type t-doc">Docs — Template</span>
+        <span class="card-name">Germany Employment Contract Template (With Bonus)</span>
+        <span class="card-summary">Employment contract template for Germany-based hires — includes bonus clause.</span>
+        <div class="card-link"><a href="https://docs.google.com/document/d/1Vm3zdGx2H-sbGynZISpV2hBS_W_n2F-E/edit?usp=drive_link&ouid=111298664576788220628&rtpof=true&sd=true" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card" data-search="employment contract template germany no bonus">
+        <span class="card-type t-doc">Docs — Template</span>
+        <span class="card-name">Germany Employment Contract Template (No Bonus)</span>
+        <span class="card-summary">Employment contract template for Germany-based hires — no bonus clause.</span>
+        <div class="card-link"><a href="https://docs.google.com/document/d/1gRsIfnm6n777jqp7OUZuSvkvGeqSBB5X/edit?usp=drive_link&ouid=111298664576788220628&rtpof=true&sd=true" target="_blank">Open file ↗</a></div>
+      </div>
+      <div class="card" data-search="employment contract template cyprus all versions">
+        <span class="card-type t-doc">Docs — Templates (8 files)</span>
+        <span class="card-name">Cyprus Employment Contract Templates</span>
+        <span class="card-summary">All Cyprus employment contract templates. Click each link to open the relevant version.</span>
+        <div class="card-link" style="display:flex; flex-wrap:wrap; gap:6px; padding-top:10px;">
+          <a href="https://docs.google.com/document/d/10_OBrroe1c2nmsTCJ8FmGw_P1dEQilaO/edit?usp=drive_link&ouid=111298664576788220628&rtpof=true&sd=true" target="_blank" style="font-size:11px; padding:4px 10px; text-decoration:none; background:rgba(26,171,117,0.12); border:1px solid rgba(26,171,117,0.2); color:#1aab75; border-radius:6px;">Version 1 ↗</a>
+          <a href="https://docs.google.com/document/d/17dCzdYDwX0navRhpSKGT4lYauc3onnB2/edit?usp=drive_link&ouid=111298664576788220628&rtpof=true&sd=true" target="_blank" style="font-size:11px; padding:4px 10px; text-decoration:none; background:rgba(26,171,117,0.12); border:1px solid rgba(26,171,117,0.2); color:#1aab75; border-radius:6px;">Version 2 ↗</a>
+          <a href="https://docs.google.com/document/d/13VtOCQb7mSQ3YjPDH425NU4B5n0s_xDo/edit?usp=drive_link&ouid=111298664576788220628&rtpof=true&sd=true" target="_blank" style="font-size:11px; padding:4px 10px; text-decoration:none; background:rgba(26,171,117,0.12); border:1px solid rgba(26,171,117,0.2); color:#1aab75; border-radius:6px;">Version 3 ↗</a>
+          <a href="https://docs.google.com/document/d/1RZOiyQAVo3BYM9GazrlzbZnoOVI3Oqz6/edit?usp=drive_link&ouid=111298664576788220628&rtpof=true&sd=true" target="_blank" style="font-size:11px; padding:4px 10px; text-decoration:none; background:rgba(26,171,117,0.12); border:1px solid rgba(26,171,117,0.2); color:#1aab75; border-radius:6px;">Version 4 ↗</a>
+          <a href="https://docs.google.com/document/d/1XubAgdwFew97GmGdLjbryw-dQR-eac5K/edit?usp=drive_link&ouid=111298664576788220628&rtpof=true&sd=true" target="_blank" style="font-size:11px; padding:4px 10px; text-decoration:none; background:rgba(26,171,117,0.12); border:1px solid rgba(26,171,117,0.2); color:#1aab75; border-radius:6px;">Version 5 ↗</a>
+          <a href="https://docs.google.com/document/d/1g4Nc3HJ-EQ-Q3K5tsSCnvndawLxeG64s/edit?usp=drive_link&ouid=111298664576788220628&rtpof=true&sd=true" target="_blank" style="font-size:11px; padding:4px 10px; text-decoration:none; background:rgba(26,171,117,0.12); border:1px solid rgba(26,171,117,0.2); color:#1aab75; border-radius:6px;">Version 6 ↗</a>
+          <a href="https://docs.google.com/document/d/1LboXQTEiF3LFW7AcHspfBS_GRrLAEOm8/edit?usp=drive_link&ouid=111298664576788220628&rtpof=true&sd=true" target="_blank" style="font-size:11px; padding:4px 10px; text-decoration:none; background:rgba(26,171,117,0.12); border:1px solid rgba(26,171,117,0.2); color:#1aab75; border-radius:6px;">Version 7 ↗</a>
+          <a href="https://docs.google.com/document/d/1A6N1mXD8QHXxl8h1gspWpPIq0Y_Y-u_N/edit?usp=drive_link&ouid=111298664576788220628&rtpof=true&sd=true" target="_blank" style="font-size:11px; padding:4px 10px; text-decoration:none; background:rgba(26,171,117,0.12); border:1px solid rgba(26,171,117,0.2); color:#1aab75; border-radius:6px;">Version 8 ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Resources -->
+  <div class="topic" data-topic="video resources">
+    <div class="topic-header">
+      <div class="topic-pill"><div class="topic-dot" style="background:#c47dc5;"></div><span class="topic-name">Video Resources</span></div>
       <span class="topic-count">2 files</span>
     </div>
     <div class="cards">
-      <div class="card">
+      <div class="card" data-search="video tools hire walkthrough guidance hiring team mp4">
         <span class="card-type t-mp4">MP4 — Video</span>
         <span class="card-name">Using the Right Tools to Hire</span>
         <span class="card-summary">Video walkthrough on how to use the right tools throughout the hiring process, covering practical guidance for the hiring team.</span>
         <div class="card-link"><a href="https://globaltrad-my.sharepoint.com/:v:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/Using%20the%20right%20tools%20to%20hire.mp4?csf=1&web=1&e=Yr4x2D" target="_blank">Open file ↗</a></div>
       </div>
-      <div class="card">
+      <div class="card" data-search="video teamtailor demo ats evaluation replacement sparkhire comeet mp4">
         <span class="card-type t-mp4">MP4 — Video</span>
         <span class="card-name">Teamtailor Demo</span>
         <span class="card-summary">Demo recording of Teamtailor as part of the ATS evaluation process, assessing it as a potential replacement for Sparkhire/Comeet.</span>
@@ -424,5 +684,215 @@
   </div>
 
 </div>
+
+<!-- Floating chat button -->
+<button id="chatBtn" title="Ask the hiring assistant">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4C2.9 2 2 2.9 2 4v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+</button>
+
+<!-- Chat panel -->
+<div id="chatPanel">
+  <div class="chat-header">
+    <div class="chat-avatar">eT</div>
+    <div class="chat-header-text">
+      <div class="chat-header-name">Hiring Assistant</div>
+      <div class="chat-header-status">● Online</div>
+    </div>
+    <button class="chat-close" id="chatClose">✕</button>
+  </div>
+  <div id="chatMessages"></div>
+  <div class="chat-suggestions" id="suggestions">
+    <span class="suggestion">How do I run background checks?</span>
+    <span class="suggestion">Where is the offer template?</span>
+    <span class="suggestion">How do I use Spinach AI?</span>
+    <span class="suggestion">What ATS options are we evaluating?</span>
+  </div>
+  <div class="chat-input-row">
+    <textarea id="chatInput" placeholder="Ask about any resource or process…" rows="1"></textarea>
+    <button id="sendBtn">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+// ── Knowledge base of all resources ──
+const RESOURCES = [
+  { name: "eToro AI-First Hiring Ecosystem", topic: "Strategy & Vision", type: "PDF Deck", desc: "Full blueprint deck covering the interconnected hiring model across HR, Hiring Managers, and candidates. Tool architecture, data flow diagrams, continuous automation loop from requisition to onboarding.", url: "https://globaltrad-my.sharepoint.com/:b:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/eToro_AI_Hiring_Ecosystem.pdf?csf=1&web=1&e=d8zzaY" },
+  { name: "eToro New Hiring Ecosystem", topic: "Strategy & Vision", type: "PDF Deck", desc: "Companion deck on new hiring ecosystem workflow. Candidate experience, transparent AI usage, consent protocols, full journey from kick-off through to onboarding in Bob.", url: "https://globaltrad-my.sharepoint.com/:b:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/eToro%20New%20Hiring%20Ecosystem.pdf?csf=1&web=1&e=Dkeiz5" },
+  { name: "Hiring with and for AI", topic: "Strategy & Vision", type: "Word Doc", desc: "Deep-dive into current recruiting landscape, pain points, improvement roadmap. Unified AI-first approach with Base44 (Yossi & Evo apps), Spinach AI, interconnected ecosystem from HR, Hiring Manager and Candidate perspectives.", url: "https://globaltrad-my.sharepoint.com/:w:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/Hiring%20with%20and%20for%20A.I.docx?d=w6b44e9779ad04426ae55bdb66fc301fe&csf=1&web=1&e=nunn0j" },
+  { name: "Automating the Recruitment Lifecycle", topic: "Process Automation", type: "PDF Deck", desc: "Moving from manual friction to intelligent hiring. Phases: intelligent kick-off with AI scorecards, sourcing & scheduling with AI bot, stopping information leakage with Spinach AI, finalising/security with trigger-based automations and Docusign integration.", url: "https://globaltrad-my.sharepoint.com/:b:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/eToro%20Hiring%20Landscape.pdf?csf=1&web=1&e=a680Jg" },
+  { name: "New Hiring Ecosystem", topic: "Workflow & Ecosystem Design", type: "Word Doc", desc: "Structured breakdown of proposed interconnected ecosystem. Maps each step to responsible tool (Base44 Yossi, Bob, ATS Sparkhire, Spinach AI, Base44 Evo) with integration types (Zapier custom / built-in) for HR & TA, Hiring Manager and Candidate perspectives.", url: "https://globaltrad-my.sharepoint.com/:w:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/New%20Hiring%20Ecosystem.docx?d=w9f5904c9f75b4cf2a5a8f9e81189758e&csf=1&web=1&e=SuPuTV" },
+  { name: "Hiring Dashboard Master", topic: "Data & Reporting", type: "Excel Dashboard", desc: "Master Excel hiring dashboard tracking positions, hires, and key recruiting metrics across the organisation including TTH, TTF, offer acceptance rates.", url: "https://globaltrad-my.sharepoint.com/:x:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/Hiring_Dashboard_Master.xlsx?d=wc1b1d4a3b50245a9b2ed27f2763f2a8b&csf=1&web=1&e=d1DFtw" },
+  { name: "ATS Trials", topic: "Data & Reporting", type: "Excel Tracker", desc: "Spreadsheet tracking evaluation and trial of ATS platforms: Teamtailor, Workable, Greenhouse as potential alternatives to Sparkhire/Comeet.", url: "https://globaltrad-my.sharepoint.com/:x:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/ATS%20trials.xlsx?d=w3682e2d78c3240398d7b9ff8cb4386cf&csf=1&web=1&e=7fpFP8" },
+  { name: "ATS Evaluations", topic: "Data & Reporting", type: "Google Doc", desc: "Detailed evaluations of ATS platforms including feature comparisons, strengths, weaknesses and recommendations for Teamtailor, Workable, Greenhouse vs current Sparkhire/Comeet.", url: "https://docs.google.com/document/d/1183_M-g_bgp4r1GGKp9zk_H6Y4xcgWs6fCj7ne_syO4/edit?tab=t.0" },
+  { name: "SOP for Hiring Teams", topic: "Tools & SOPs", type: "Word SOP", desc: "Living SOP for hiring team. Step-by-step guides: enabling MS Teams in Comeet, setting up Spinach AI recruiting assistant with 'Video Interview' keyword, using Ask Spinach to generate evidence-based scorecard evaluations with prompts.", url: "https://globaltrad-my.sharepoint.com/:w:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/SOP%20For%20Hiring%20Teams%20-%20using%20the%20right%20tools%20to%20hire.docx?d=w207db970ce084ca59eee7fe180d8c472&csf=1&web=1&e=i4r8vN" },
+  { name: "eToro Recruiting Checklist", topic: "Tools & SOPs", type: "Word Checklist", desc: "Reusable recruiting checklist covering key steps across hiring process. Make a copy for each new position.", url: "https://globaltrad-my.sharepoint.com/:w:/r/personal/evoch_etoro_com/Documents/eToro%20recruiting%20checklist%20(Make%20a%20Copy).docx?d=w410ebb552e354394865fd6fd773fd0dc&csf=1&web=1&e=PmcEVe" },
+  { name: "Benefits by Country", topic: "Tools & SOPs", type: "Google Sheets", desc: "Employee benefits broken down by country. Used to inform offer discussions and compensation planning when making offers to candidates in different locations.", url: "https://docs.google.com/spreadsheets/d/1dI17yqRFZmp-EqBStf0FTo17q_aTb73wRyemx014BLQ/edit?usp=drive_link" },
+  { name: "Offer Approval Template", topic: "Tools & SOPs", type: "Google Doc Template", desc: "Template for submitting offer approvals. Used by recruiters to initiate the approval flow with VP and HR before extending an offer. Replaces manual email-based approvals.", url: "https://docs.google.com/document/d/1a9hwPH23ZIMId4LOs1aJMJzqaqm-_Enhj4WqOGjRYZs/edit?usp=drive_link" },
+  { name: "eToro Global Interview Question Bank", topic: "Tools & SOPs", type: "Google Doc", desc: "Centralised library of interview questions used across roles and departments globally. Reference for building structured, consistent interview frameworks.", url: "https://docs.google.com/document/d/15oDArJu2yNMLVOmAmDx7PlM_mf040dO15WSFj7vPJpo/edit?usp=drive_link" },
+  { name: "eToro Talent Team Weekly Updates", topic: "Tools & SOPs", type: "Google Doc", desc: "Running log of weekly updates from talent team covering progress, priorities, and key hiring developments across the organisation.", url: "https://docs.google.com/document/d/1FCYzRbVYi1UP-RpqgBqAT6sbuaibOJ30jiTi_PLxiXw/edit?usp=drive_link" },
+  { name: "Security Procedure by Units", topic: "Tools & SOPs", type: "Google Sheets", desc: "Security clearance procedure mapped by business unit. Guides background check and reliability test steps during the offer stage. Security team receives automated email when candidate moves to security stage.", url: "https://docs.google.com/spreadsheets/d/1v4NxrmNEbOE5FrKVKVc425cSmf1ZQXWxcCLbkgBOM28/edit?usp=drive_link" },
+  { name: "Evolving HR & Recruitment Project Tracker", topic: "Project Tracking", type: "Monday.com Board", desc: "Monday.com board tracking full HR and recruitment evolution project — tasks, owners, statuses, milestones across the AI-first hiring transformation.", url: "https://etoro.monday.com/boards/18404024812" },
+  { name: "Using the Right Tools to Hire", topic: "Video Resources", type: "MP4 Video", desc: "Video walkthrough on how to use the right tools throughout the hiring process, covering practical guidance for the hiring team.", url: "https://globaltrad-my.sharepoint.com/:v:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/Using%20the%20right%20tools%20to%20hire.mp4?csf=1&web=1&e=Yr4x2D" },
+  { name: "Teamtailor Demo", topic: "Video Resources", type: "MP4 Video", desc: "Demo recording of Teamtailor as part of ATS evaluation process, assessing it as a potential replacement for Sparkhire/Comeet.", url: "https://globaltrad-my.sharepoint.com/:v:/r/personal/evoch_etoro_com/Documents/A.I%20recruiting%20projects/Teamtailor%20Demo.mp4?csf=1&web=1&e=caHhjd" },
+  { name: "Spinach AI", topic: "A.I Tools & Other Apps", type: "App", desc: "AI recruiting assistant used across all virtual interviews. Records, transcribes, and generates structured notes and evaluations. Configure recruiting assistant agent with 'Video Interview' keyword.", url: "https://app.spinach.ai/ai/home?section=summaries&sid=SPS17c8ebd477&bid=c612c1ee-c91b-4410-8c7d-d982996b295f&_t=1776404169887&sso=true&cid=2e3c6d6a-6548-46c8-9134-bf71da3aabcb" },
+  { name: "Claude", topic: "A.I Tools & Other Apps", type: "App", desc: "Anthropic's AI assistant. Used for drafting job descriptions, analysing CVs, generating scorecards, writing communications, and supporting recruiters with a wide range of tasks.", url: "https://claude.ai/new" },
+  { name: "ChatGPT", topic: "A.I Tools & Other Apps", type: "App", desc: "OpenAI's AI assistant. Used for low-level tasks such as drafting emails, summarising content, and general text generation to support the recruiting workflow.", url: "https://chatgpt.com/" },
+  { name: "Base44", topic: "A.I Tools & Other Apps", type: "App", desc: "No-code AI app builder used to create the Yossi (job requisition) and Evo (AI skills evaluator) apps. Enables custom integrations and mini-apps where native integrations are missing.", url: "https://app.base44.com/" },
+  { name: "NotebookLM", topic: "A.I Tools & Other Apps", type: "App", desc: "Google's AI research tool. Used to create video overviews for candidates, generate onboarding plans for new talent team members, and synthesise content from multiple documents.", url: "https://notebooklm.google.com/" },
+  { name: "MyApps", topic: "A.I Tools & Other Apps", type: "Portal", desc: "Microsoft app portal — one-stop hub to access Comeet Recruit, Bob, Docusign, Monday.com, and all other company applications.", url: "https://myapplications.microsoft.com/" },
+  { name: "Australia Employment Contract Template", topic: "Employment Contract Templates", type: "Google Doc", desc: "Standard employment contract template for hiring in Australia.", url: "https://docs.google.com/document/d/1-eKjG_Y2C5nP8bn52MoI8pINgZxN9dZo/edit?usp=drive_link" },
+  { name: "Belgium Employment Contract Template (English)", topic: "Employment Contract Templates", type: "Google Doc", desc: "Standard employment contract template for hiring in Belgium — English version.", url: "https://docs.google.com/document/d/107KqNxV5jODi18WpoO5fXqHut-78UpAt/edit?usp=drive_link" },
+  { name: "Belgium Employment Contract Template (Deutsch)", topic: "Employment Contract Templates", type: "Google Doc", desc: "Standard employment contract template for hiring in Belgium — Deutsch version.", url: "https://docs.google.com/document/d/10D6Dn1jCdjixR21aFnCw7yjdtYTDjUvc/edit?usp=drive_link" },
+  { name: "UK Employment Contract Template (CF Roles)", topic: "Employment Contract Templates", type: "Google Doc", desc: "Standard employment contract template for CF roles hiring in the United Kingdom.", url: "https://docs.google.com/document/d/192d6BjE2s8HX4JzbivaDR7eTxBOKe3TE/edit?usp=drive_link" },
+  { name: "US Employment Contract Template", topic: "Employment Contract Templates", type: "Google Doc", desc: "Standard employment contract template for hiring in the United States. Link coming soon.", url: "" },
+  { name: "Malta Employment Contract Template", topic: "Employment Contract Templates", type: "Google Doc", desc: "Standard employment contract template for hiring in Malta. Link coming soon.", url: "" },
+  { name: "Germany Employment Contract Template", topic: "Employment Contract Templates", type: "Google Doc", desc: "Standard employment contract template for hiring in Germany. Link coming soon.", url: "" },
+  { name: "France Employment Contract Template", topic: "Employment Contract Templates", type: "Google Doc", desc: "Standard employment contract template for hiring in France. Link coming soon.", url: "" },
+  { name: "Cyprus Employment Contract Template", topic: "Employment Contract Templates", type: "Google Doc", desc: "Standard employment contract template for hiring in Cyprus. Link coming soon.", url: "" },
+];
+
+const SYSTEM_PROMPT = `You are a helpful hiring assistant for the eToro Talent team. You know about all 34 resources on this hiring resource board and can guide users to the right file, explain processes, or answer questions about eToro's hiring ecosystem.
+
+Here are all the resources available:
+
+${RESOURCES.map(r => `- "${r.name}" (${r.type}, Topic: ${r.topic}): ${r.desc} [URL: ${r.url}]`).join('\n')}
+
+When recommending a resource, always include the clickable link formatted as HTML like: <a href="URL" target="_blank">Resource Name</a>
+
+Keep responses concise, friendly and practical. You can answer questions about the hiring process, tools like Spinach AI, Comeet/Sparkhire, Base44, Bob (HiBob), Docusign, Goodtime, Metaview, offer approvals, background checks, interview scorecards, ATS evaluation, and anything covered in the documents above. If something is not covered in the resources, say so honestly.`;
+
+// ── Search ──
+const searchInput = document.getElementById('searchInput');
+const noResults = document.getElementById('noResults');
+
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.toLowerCase().trim();
+  const topics = document.querySelectorAll('.topic');
+  let totalVisible = 0;
+
+  topics.forEach(topic => {
+    const cards = topic.querySelectorAll('.card');
+    let topicVisible = 0;
+
+    cards.forEach(card => {
+      const text = (card.dataset.search + ' ' + card.textContent).toLowerCase();
+      const match = !q || text.includes(q);
+      card.classList.toggle('hidden', !match);
+      if (match) topicVisible++;
+    });
+
+    topic.style.display = topicVisible === 0 && q ? 'none' : '';
+    totalVisible += topicVisible;
+  });
+
+  noResults.style.display = totalVisible === 0 && q ? 'block' : 'none';
+});
+
+// ── Chat ──
+const chatBtn = document.getElementById('chatBtn');
+const chatPanel = document.getElementById('chatPanel');
+const chatClose = document.getElementById('chatClose');
+const chatMessages = document.getElementById('chatMessages');
+const chatInput = document.getElementById('chatInput');
+const sendBtn = document.getElementById('sendBtn');
+const suggestions = document.getElementById('suggestions');
+
+let conversationHistory = [];
+let isOpen = false;
+
+chatBtn.addEventListener('click', () => {
+  isOpen = !isOpen;
+  chatPanel.classList.toggle('open', isOpen);
+  if (isOpen && chatMessages.children.length === 0) {
+    addMessage('bot', "Hi! I'm the eToro Hiring Assistant. I know all 18 resources on this board — ask me anything about the hiring process, where to find a file, or how to use a tool. 👋");
+  }
+  if (isOpen) chatInput.focus();
+});
+
+chatClose.addEventListener('click', () => {
+  isOpen = false;
+  chatPanel.classList.remove('open');
+});
+
+document.querySelectorAll('.suggestion').forEach(s => {
+  s.addEventListener('click', () => {
+    chatInput.value = s.textContent;
+    suggestions.style.display = 'none';
+    sendMessage();
+  });
+});
+
+chatInput.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+});
+sendBtn.addEventListener('click', sendMessage);
+
+chatInput.addEventListener('input', () => {
+  chatInput.style.height = 'auto';
+  chatInput.style.height = Math.min(chatInput.scrollHeight, 100) + 'px';
+});
+
+function addMessage(role, html) {
+  const div = document.createElement('div');
+  div.className = `msg ${role}`;
+  div.innerHTML = html;
+  chatMessages.appendChild(div);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+  return div;
+}
+
+function addTyping() {
+  const div = document.createElement('div');
+  div.className = 'msg-typing';
+  div.innerHTML = '<span></span><span></span><span></span>';
+  chatMessages.appendChild(div);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+  return div;
+}
+
+async function sendMessage() {
+  const text = chatInput.value.trim();
+  if (!text) return;
+
+  chatInput.value = '';
+  chatInput.style.height = 'auto';
+  suggestions.style.display = 'none';
+  sendBtn.disabled = true;
+
+  addMessage('user', text);
+  conversationHistory.push({ role: 'user', content: text });
+
+  const typing = addTyping();
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: SYSTEM_PROMPT,
+        messages: conversationHistory
+      })
+    });
+
+    const data = await response.json();
+    typing.remove();
+
+    const reply = data.content?.[0]?.text || "Sorry, I couldn't get a response. Please try again.";
+    addMessage('bot', reply);
+    conversationHistory.push({ role: 'assistant', content: reply });
+
+  } catch (err) {
+    typing.remove();
+    addMessage('bot', 'Something went wrong. Please check your connection and try again.');
+  }
+
+  sendBtn.disabled = false;
+  chatInput.focus();
+}
+</script>
 </body>
 </html>
